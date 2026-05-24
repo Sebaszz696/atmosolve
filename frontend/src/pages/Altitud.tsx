@@ -46,7 +46,7 @@ export default function Altitud() {
         P(h) = P₀·((T₀ − L·h)/T₀)^(g/RL) — encontrar h dado P_obs
       </p>
 
-      <div className="flex gap-2 mb-4">
+      <div className="flex flex-wrap gap-2 mb-4">
         {(["newton", "secante"] as Method[]).map((m) => (
           <button
             key={m}

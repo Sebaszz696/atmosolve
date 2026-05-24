@@ -63,7 +63,7 @@ export default function Interpolacion() {
       <h2 className="text-2xl font-bold text-sky-900 mb-1">Interpolación — Temperatura Diaria</h2>
       <p className="text-sm text-gray-500 mb-4">Reconstruye T(t) a partir de mediciones discretas</p>
 
-      <div className="flex gap-2 mb-3">
+      <div className="flex flex-wrap gap-2 mb-3">
         {(["lagrange", "newton"] as Method[]).map((m) => (
           <button key={m} onClick={() => { setMethod(m); setResult(null); }}
             className={`px-4 py-1.5 rounded text-sm font-medium transition-colors ${method === m ? "bg-sky-600 text-white" : "bg-white border border-gray-300 text-gray-700 hover:bg-sky-50"}`}>

@@ -46,7 +46,7 @@ export default function Rocio() {
         Ecuación de Magnus-Tetens: e_s(Td) = (HR/100) × e_s(T_amb)
       </p>
 
-      <div className="flex gap-2 mb-4">
+      <div className="flex flex-wrap gap-2 mb-4">
         {METHODS.map(({ key, label }) => (
           <button
             key={key}

@@ -60,8 +60,9 @@ export default function EDO() {
       </p>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="bg-white rounded-xl border border-gray-200 p-5 space-y-3">
-          <h3 className="font-semibold text-gray-800">Parámetros</h3>
+        <div className="bg-white rounded-xl border border-gray-200 p-5">
+          <h3 className="font-semibold text-gray-800 mb-3">Parámetros</h3>
+          <div className="grid grid-cols-2 lg:grid-cols-1 gap-3">
           <NumberInput label="T₀ inicial [K]" value={T0} onChange={setT0} step={0.5} />
           <NumberInput label="t_final [s]" value={tf} onChange={setTf} step={3600} min={0} />
           <NumberInput label="Paso h [s]" value={h} onChange={setH} step={10} min={1} />
@@ -71,6 +72,7 @@ export default function EDO() {
           <NumberInput label="T_env(t) = a + b·t → a" value={T_env_a} onChange={setTEnvA} step={0.5} />
           <NumberInput label="T_env(t) = a + b·t → b" value={T_env_b} onChange={setTEnvB} step={0.0001} />
           <NumberInput label="Q_rad amplitud A" value={Q_amp} onChange={setQAmp} step={0.0001} />
+          </div>
           <button
             onClick={run}
             disabled={loading}
@@ -97,7 +99,7 @@ export default function EDO() {
             </div>
           )}
           {error && <p className="text-sm text-red-600">{error}</p>}
-        </div>
+        </div>{/* fin panel parámetros */}
 
         <div className="lg:col-span-2">
           {chartData && chartData.length > 0 && (

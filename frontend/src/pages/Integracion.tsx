@@ -54,7 +54,7 @@ export default function Integracion() {
       <h2 className="text-2xl font-bold text-sky-900 mb-1">Precipitación Acumulada</h2>
       <p className="text-sm text-gray-500 mb-4">∫ I(t) dt — integración numérica de intensidad de lluvia</p>
 
-      <div className="flex gap-2 mb-4">
+      <div className="flex flex-wrap gap-2 mb-4">
         {METHODS.map(({ key, label }) => (
           <button key={key} onClick={() => setMethod(key)}
             className={`px-4 py-1.5 rounded text-sm font-medium transition-colors ${method === key ? "bg-sky-600 text-white" : "bg-white border border-gray-300 text-gray-700 hover:bg-sky-50"}`}>
