@@ -144,8 +144,7 @@ export default function Home() {
           <li className="flex gap-3">
             <span className="font-bold text-amber-600 shrink-0">1.</span>
             Asegúrate de que el backend esté corriendo (indicador verde arriba). Si no, abre una
-            terminal en <code className="bg-amber-100 px-1 rounded font-mono text-xs">backend/</code> y ejecuta{" "}
-            <code className="bg-amber-100 px-1 rounded font-mono text-xs">uvicorn main:app --reload</code>.
+            terminal en `backend/` y ejecuta `uvicorn main:app --reload`.
           </li>
           <li className="flex gap-3">
             <span className="font-bold text-amber-600 shrink-0">2.</span>
