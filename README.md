@@ -154,11 +154,6 @@ Trapecio es `O(h²)`, Simpson 1/3 es `O(h⁴)`, Gauss-Legendre con `n` puntos es
 ### Módulo 5 — EDO de temperatura
 Euler explícito es `O(h)` en error global; RK4 es `O(h⁴)` — ~10⁶ veces más preciso para el mismo paso. La diferencia entre ambos en 6 horas con `h=60s` es típicamente `< 10⁻³ K`.
 
----
-
-## Capturas
-
-*(Agregar screenshots aquí después de correr la aplicación)*
 
 ---
 
