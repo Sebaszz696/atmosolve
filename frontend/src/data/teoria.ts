@@ -107,11 +107,6 @@ export const teoria: TeoriaModulo[] = [
         contenido:
           "Usa polinomios de grado 2 ($n$ debe ser par):\n\n$$\\int_a^b I\\,dt \\approx \\frac{h}{3}\\Bigl[I(t_0) + 4I(t_1) + 2I(t_2) + 4I(t_3) + \\cdots + I(t_n)\\Bigr]$$\n\nError de truncamiento: $\\mathcal{O}(h^4)$. Cuatro órdenes de magnitud más preciso que el Trapecio con el mismo paso.",
       },
-      {
-        titulo: "Gauss-Legendre",
-        contenido:
-          "Elige puntos de evaluación óptimos (no igualmente espaciados) para maximizar la precisión:\n\n$$\\int_{-1}^{1} f(x)\\,dx \\approx \\sum_{i=1}^{n} w_i\\, f(x_i)$$\n\nCambio de variable al intervalo estándar $[-1,\\,1]$:\n\n$$t = \\frac{(b-a)\\,x + (b+a)}{2}, \\qquad dt = \\frac{b-a}{2}\\,dx$$\n\nCon $n = 5$ puntos de Gauss se integran exactamente polinomios de grado $\\leq 9$.",
-      },
     ],
   },
   {

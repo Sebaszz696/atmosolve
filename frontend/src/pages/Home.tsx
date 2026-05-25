@@ -47,7 +47,7 @@ const modulos = [
     icono: "🌧️",
     descripcion:
       "Integra la intensidad de lluvia I(t) en el tiempo para obtener la precipitación total acumulada en mm.",
-    metodos: ["Trapecio", "Simpson 1/3", "Gauss-Legendre"],
+    metodos: ["Trapecio", "Simpson 1/3"],
     ejemplo: "I(t) de 0 a 6 h → P ≈ 39 mm",
     sabes: "Los tres métodos deben dar resultados muy similares. Simpson y Gauss son más precisos.",
   },

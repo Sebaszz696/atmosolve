@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
-from atmosolve import trapecio, simpson_1_3, gauss_legendre, lagrange
-from schemas import IntegracionRequest, GaussRequest, NumericalResponse
+from atmosolve import trapecio, simpson_1_3, lagrange
+from schemas import IntegracionRequest, NumericalResponse
 
 router = APIRouter(prefix="/api/integracion", tags=["integracion"])
 
@@ -38,13 +38,3 @@ def simpson_endpoint(req: IntegracionRequest):
     return NumericalResponse(resultado=resultado, tabla=tabla, puntos=puntos)
 
 
-@router.post("/gauss", response_model=NumericalResponse)
-def gauss_endpoint(req: GaussRequest):
-    try:
-        I_func = lambda t: lagrange(req.t_nodos, req.I_nodos, t)
-        resultado = gauss_legendre(I_func, req.a, req.b, req.n)
-        puntos = _curva_intensidad(req.t_nodos, req.I_nodos)
-    except Exception as e:
-        raise HTTPException(400, str(e))
-    tabla = [{"metodo": f"Gauss-Legendre ({req.n}pts)", "precipitacion_mm": resultado}]
-    return NumericalResponse(resultado=resultado, tabla=tabla, puntos=puntos)

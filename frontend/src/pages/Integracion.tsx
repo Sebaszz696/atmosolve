@@ -7,12 +7,11 @@ import type { NumericalResponse } from "../types";
 import TeoriaPanel from "../components/TeoriaPanel";
 import { teoria } from "../data/teoria";
 
-type Method = "trapecio" | "simpson" | "gauss";
+type Method = "trapecio" | "simpson";
 
 const METHODS: { key: Method; label: string }[] = [
   { key: "trapecio", label: "Trapecio" },
   { key: "simpson", label: "Simpson 1/3" },
-  { key: "gauss", label: "Gauss-Legendre" },
 ];
 
 const DEFAULT_T = [0, 1, 2, 3, 4, 5, 6];
@@ -22,7 +21,6 @@ export default function Integracion() {
   const [method, setMethod] = useState<Method>("trapecio");
   const [tStr, setTStr] = useState(DEFAULT_T.join(", "));
   const [iStr, setIStr] = useState(DEFAULT_I.join(", "));
-  const [gaussN, setGaussN] = useState(5);
   const [result, setResult] = useState<NumericalResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -33,14 +31,9 @@ export default function Integracion() {
     const t_nodos = tStr.split(",").map(Number);
     const I_nodos = iStr.split(",").map(Number);
     try {
-      let data: NumericalResponse;
-      if (method === "gauss") {
-        data = await integracion.gauss({ t_nodos, I_nodos, a: t_nodos[0], b: t_nodos[t_nodos.length - 1], n: gaussN });
-      } else if (method === "simpson") {
-        data = await integracion.simpson({ t_nodos, I_nodos });
-      } else {
-        data = await integracion.trapecio({ t_nodos, I_nodos });
-      }
+      const data = method === "simpson"
+        ? await integracion.simpson({ t_nodos, I_nodos })
+        : await integracion.trapecio({ t_nodos, I_nodos });
       setResult(data);
     } catch (e: unknown) {
       setError(e instanceof Error ? e.message : "Error desconocido");
@@ -76,13 +69,6 @@ export default function Integracion() {
             <input value={iStr} onChange={(e) => setIStr(e.target.value)}
               className="rounded border border-gray-300 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500" />
           </label>
-          {method === "gauss" && (
-            <label className="flex flex-col gap-1 text-sm font-medium text-gray-700">
-              Puntos Gauss (n)
-              <input type="number" min={1} max={10} value={gaussN} onChange={(e) => setGaussN(parseInt(e.target.value))}
-                className="rounded border border-gray-300 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500" />
-            </label>
-          )}
           <button onClick={run} disabled={loading}
             className="w-full bg-sky-600 hover:bg-sky-700 text-white py-2 rounded font-medium text-sm transition-colors disabled:opacity-50">
             {loading ? "Calculando…" : "Calcular"}

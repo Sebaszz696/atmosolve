@@ -6,7 +6,6 @@ import type {
   AltitudSecanteRequest,
   InterpolacionRequest,
   IntegracionRequest,
-  GaussRequest,
   EDORequest,
 } from "../types";
 
@@ -34,7 +33,6 @@ export const interpolacion = {
 export const integracion = {
   trapecio: (d: IntegracionRequest) => post("/integracion/trapecio", d),
   simpson: (d: IntegracionRequest) => post("/integracion/simpson", d),
-  gauss: (d: GaussRequest) => post("/integracion/gauss", d),
 };
 
 export const edo = {

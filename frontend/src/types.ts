@@ -37,11 +37,6 @@ export interface IntegracionRequest {
   I_nodos: number[];
 }
 
-export interface GaussRequest extends IntegracionRequest {
-  a: number;
-  b: number;
-  n?: number;
-}
 
 export interface EDORequest {
   T0: number;
